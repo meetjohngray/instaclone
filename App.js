@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { View, Text } from 'react-native'
 import firebase from 'firebase'
+
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
@@ -14,6 +15,8 @@ import LandingScreen from './components/auth/Landing.js'
 import RegisterScreen from './components/auth/Register.js'
 import LoginScreen from './components/auth/Login'
 import MainScreen from './components/Main'
+import AddScreen from './components/main/Add'
+
 import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -86,6 +89,7 @@ export class App extends Component {
         <NavigationContainer>
           <Stack.Navigator initialRouteName='Main'>
             <Stack.Screen name='Main' component={MainScreen} options={{headerShown: false}}/>
+            <Stack.Screen name='Add' component={AddScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
