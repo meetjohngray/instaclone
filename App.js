@@ -12,7 +12,9 @@ const store = createStore(rootReducer, applyMiddleware(thunk))
 
 import LandingScreen from './components/auth/Landing.js'
 import RegisterScreen from './components/auth/Register.js'
+import LoginScreen from './components/auth/Login'
 import MainScreen from './components/Main'
+import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDDxsA63C4nRHKKKG0hpKYMPGo5oW4-o-Y",
@@ -73,6 +75,7 @@ export class App extends Component {
           <Stack.Navigator initialRouteName='Landing'>
             <Stack.Screen name='Landing' component={LandingScreen} options={{headerShown: false}}/>
             <Stack.Screen name='Register' component={RegisterScreen} />
+            <Stack.Screen name='Login' component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );
@@ -80,7 +83,11 @@ export class App extends Component {
 
     return (
       <Provider store = {store}>
-        <MainScreen/>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName='Main'>
+            <Stack.Screen name='Main' component={MainScreen} options={{headerShown: false}}/>
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     )
   }
